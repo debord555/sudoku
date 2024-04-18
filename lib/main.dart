@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sudoku/sudoku.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 enum Difficulty { easy, medium, hard }
 
@@ -194,18 +193,18 @@ class _SudokuAppState extends State<SudokuApp> {
                   context: context,
                   applicationName: "SuDoKu",
                   applicationVersion: "1.0.0",
-                  applicationIcon: Icon(Icons.sports_esports),
+                  applicationIcon: const Icon(Icons.sports_esports),
                   children: [
-                    Center(child: Text("Created by Debasish Bordoloi")),
-                    SizedBox.fromSize(size: Size.square(40)),
+                    const Center(child: Text("Created by Debasish Bordoloi")),
+                    SizedBox.fromSize(size: const Size.square(40)),
                     OutlinedButton(
                       onPressed: () => launchUrl(sourceUri),
-                      child: Text("View Source"),
+                      child: const Text("View Source"),
                     ),
                   ],
                 );
               },
-              icon: Icon(Icons.info_outline),
+              icon: const Icon(Icons.info_outline),
             ),
           ],
         ),
