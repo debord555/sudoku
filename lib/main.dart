@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sudoku/sudoku.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'custom_icons_icons.dart';
 
 enum Difficulty { easy, medium, hard }
 
@@ -12,6 +13,7 @@ void main() {
   runApp(
     MaterialApp(
       home: const SudokuApp(),
+      title: "SuDoKu",
       theme: ThemeData(
         colorSchemeSeed: Colors.blue,
         useMaterial3: true,
@@ -180,7 +182,7 @@ class _SudokuAppState extends State<SudokuApp> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 4,
-          leading: const Icon(Icons.sports_esports),
+          leading: const Icon(CustomIcons.dice_five),
           shadowColor: Colors.black,
           title: const Text(
             "SuDoKu",
@@ -193,7 +195,7 @@ class _SudokuAppState extends State<SudokuApp> {
                   context: context,
                   applicationName: "SuDoKu",
                   applicationVersion: "1.0.0",
-                  applicationIcon: const Icon(Icons.sports_esports),
+                  applicationIcon: const Icon(CustomIcons.dice_five),
                   children: [
                     const Center(child: Text("Created by Debasish Bordoloi")),
                     SizedBox.fromSize(size: const Size.square(40)),
