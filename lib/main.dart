@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,7 +10,7 @@ enum Difficulty { easy, medium, hard }
 void main() {
   runApp(
     MaterialApp(
-      home: SudokuApp(),
+      home: const SudokuApp(),
       theme: ThemeData(
         colorSchemeSeed: Colors.blue,
         useMaterial3: true,
@@ -90,7 +92,7 @@ class _SudokuAppState extends State<SudokuApp> {
 
   void startTimer() {
     Timer.periodic(
-      Duration(seconds: 1),
+      const Duration(seconds: 1),
       (timer) {
         if (!timerPaused) {
           if (!completed) {
@@ -102,14 +104,15 @@ class _SudokuAppState extends State<SudokuApp> {
             showDialog(
               context: context,
               builder: (BuildContext dialogContext) => AlertDialog(
-                icon: Icon(Icons.celebration),
-                title: Text("Congratulations!"),
+                icon: const Icon(Icons.celebration),
+                title: const Text("Congratulations!"),
+                // ignore: prefer_interpolation_to_compose_strings
                 content: Text("You have completed this " +
                     ((generatedDifficulty == Difficulty.easy) ? "easy" : ((generatedDifficulty == Difficulty.medium) ? "medium" : "hard")) +
                     " difficulty puzzle."),
                 actions: [
                   TextButton(
-                    child: Text("Thanks!"),
+                    child: const Text("Thanks!"),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                 ],
@@ -129,6 +132,7 @@ class _SudokuAppState extends State<SudokuApp> {
 
   @override
   void initState() {
+    super.initState();
     boardToSolve.meltAll();
     startTimer();
   }
@@ -174,9 +178,9 @@ class _SudokuAppState extends State<SudokuApp> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 4,
-          leading: Icon(Icons.sports_esports),
+          leading: const Icon(Icons.sports_esports),
           shadowColor: Colors.black,
-          title: Text(
+          title: const Text(
             "SuDoKu",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
@@ -193,12 +197,12 @@ class _SudokuAppState extends State<SudokuApp> {
                     // The Timer
                     Expanded(
                       child: Card(
-                        margin: EdgeInsets.fromLTRB(10, 10, 5, 5),
+                        margin: const EdgeInsets.fromLTRB(10, 10, 5, 5),
                         child: Center(
                           child: FittedBox(
                             child: Text(
                               "${timeElapsed ~/ 3600 < 10 ? "0${timeElapsed ~/ 3600}" : timeElapsed ~/ 3600}:${(timeElapsed % 3600) ~/ 60 < 10 ? "0${(timeElapsed % 3600) ~/ 60}" : (timeElapsed % 3600) ~/ 60}:${timeElapsed % 60 < 10 ? "0${timeElapsed % 60}" : timeElapsed % 60}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 72,
                               ),
@@ -211,7 +215,7 @@ class _SudokuAppState extends State<SudokuApp> {
                     // The Controls
                     Expanded(
                       child: Card(
-                        margin: EdgeInsets.fromLTRB(10, 5, 5, 10),
+                        margin: const EdgeInsets.fromLTRB(10, 5, 5, 10),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -224,7 +228,7 @@ class _SudokuAppState extends State<SudokuApp> {
                                 });
                               },
                               multiSelectionEnabled: false,
-                              segments: [
+                              segments: const [
                                 ButtonSegment<Difficulty>(
                                   value: Difficulty.easy,
                                   label: Text("Easy"),
@@ -263,7 +267,7 @@ class _SudokuAppState extends State<SudokuApp> {
                                 },
                                 child: Container(
                                   width: double.infinity,
-                                  child: Center(child: Text("Generate Puzzle")),
+                                  child: const Center(child: Text("Generate Puzzle")),
                                 ),
                               ),
                             ),
@@ -279,7 +283,7 @@ class _SudokuAppState extends State<SudokuApp> {
               Expanded(
                 flex: 5,
                 child: Card(
-                  margin: EdgeInsets.fromLTRB(5, 10, 10, 10),
+                  margin: const EdgeInsets.fromLTRB(5, 10, 10, 10),
                   child: Center(
                     child: Container(
                       color: Colors.black45,
@@ -381,7 +385,7 @@ class _SudokuAppState extends State<SudokuApp> {
               Expanded(
                 flex: 2,
                 child: Card(
-                  margin: EdgeInsets.fromLTRB(10, 10, 5, 10),
+                  margin: const EdgeInsets.fromLTRB(10, 10, 5, 10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -401,13 +405,13 @@ class _SudokuAppState extends State<SudokuApp> {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext cc) => AlertDialog(
-                                        icon: Icon(Icons.error),
-                                        title: Text("Impossible to Solve"),
-                                        content: Text("The current set of clues have no possible solution."),
+                                        icon: const Icon(Icons.error),
+                                        title: const Text("Impossible to Solve"),
+                                        content: const Text("The current set of clues have no possible solution."),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.of(cc).pop(),
-                                            child: Text("Ok"),
+                                            child: const Text("Ok"),
                                           ),
                                         ],
                                       ),
@@ -427,7 +431,7 @@ class _SudokuAppState extends State<SudokuApp> {
                                 },
                           child: Container(
                             width: double.infinity,
-                            child: Center(child: Text("Solve")),
+                            child: const Center(child: Text("Solve")),
                           ),
                         ),
                       ),
@@ -450,7 +454,7 @@ class _SudokuAppState extends State<SudokuApp> {
                                 },
                           child: Container(
                             width: double.infinity,
-                            child: Center(child: Text("Un-solve")),
+                            child: const Center(child: Text("Un-solve")),
                           ),
                         ),
                       ),
@@ -467,7 +471,7 @@ class _SudokuAppState extends State<SudokuApp> {
                           },
                           child: Container(
                             width: double.infinity,
-                            child: Center(child: Text("Reset")),
+                            child: const Center(child: Text("Reset")),
                           ),
                         ),
                       ),
@@ -478,7 +482,7 @@ class _SudokuAppState extends State<SudokuApp> {
               Expanded(
                 flex: 6,
                 child: Card(
-                  margin: EdgeInsets.fromLTRB(5, 10, 10, 10),
+                  margin: const EdgeInsets.fromLTRB(5, 10, 10, 10),
                   child: Center(
                     child: Container(
                       color: Colors.black45,
@@ -510,6 +514,13 @@ class _SudokuAppState extends State<SudokuApp> {
                                       ? MediaQuery.of(context).size.width / 16
                                       : MediaQuery.of(context).size.height * 2 / 25,
                                   child: TextButton(
+                                    onPressed: (solveInputEnabled)
+                                        ? () {
+                                            setState(() {
+                                              activeCellIDSolve = currCellID;
+                                            });
+                                          }
+                                        : null,
                                     child: Center(
                                       child: FittedBox(
                                         fit: BoxFit.scaleDown,
@@ -522,13 +533,6 @@ class _SudokuAppState extends State<SudokuApp> {
                                         ),
                                       ),
                                     ),
-                                    onPressed: (solveInputEnabled)
-                                        ? () {
-                                            setState(() {
-                                              activeCellIDSolve = currCellID;
-                                            });
-                                          }
-                                        : null,
                                   ),
                                 );
                               },
@@ -546,7 +550,7 @@ class _SudokuAppState extends State<SudokuApp> {
         bottomNavigationBar: NavigationBar(
           selectedIndex: pageIndex,
           onDestinationSelected: updatePageIndex,
-          destinations: [
+          destinations: const [
             NavigationDestination(
               selectedIcon: Icon(Icons.sports_esports),
               icon: Icon(Icons.sports_esports_outlined),
@@ -566,30 +570,30 @@ class _SudokuAppState extends State<SudokuApp> {
                 children: [
                   // Note button
                   FloatingActionButton(
-                    child: Icon(
-                      Icons.edit_note,
-                      color: (notesMode) ? Colors.white : Colors.black,
-                    ),
                     backgroundColor: (notesMode) ? Colors.blue.shade900 : Colors.blue.shade100,
                     onPressed: () {
                       setState(() {
                         notesMode = true;
                       });
                     },
+                    child: Icon(
+                      Icons.edit_note,
+                      color: (notesMode) ? Colors.white : Colors.black,
+                    ),
                   ),
-                  SizedBox.fromSize(size: Size.square(30)),
+                  SizedBox.fromSize(size: const Size.square(30)),
                   // Final button
                   FloatingActionButton(
-                    child: Icon(
-                      Icons.edit,
-                      color: (!notesMode) ? Colors.white : Colors.black,
-                    ),
                     backgroundColor: (!notesMode) ? Colors.blue.shade900 : Colors.blue.shade100,
                     onPressed: () {
                       setState(() {
                         notesMode = false;
                       });
                     },
+                    child: Icon(
+                      Icons.edit,
+                      color: (!notesMode) ? Colors.white : Colors.black,
+                    ),
                   ),
                 ],
               ),

@@ -342,11 +342,11 @@ class SudokuBoard extends Graph<SudokuCell, bool> {
   }
 
   // Set board from input
-  int setCells(List<int> numbers_list) {
-    if (numbers_list.length != 81) {
+  int setCells(List<int> numbersList) {
+    if (numbersList.length != 81) {
       return -1;
     } else {
-      for (int number in numbers_list) {
+      for (int number in numbersList) {
         if (number < 0 || number > 9) {
           return -2;
         }
@@ -354,7 +354,7 @@ class SudokuBoard extends Graph<SudokuCell, bool> {
       int i = 0;
       for (SudokuCell cell in vertexList) {
         cell.unsetNotesMode();
-        cell.setNumber(numbers_list[i]);
+        cell.setNumber(numbersList[i]);
         i++;
       }
       return 0;
