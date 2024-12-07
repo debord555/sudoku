@@ -595,7 +595,7 @@ class _SudokuAppState extends State<SudokuApp> {
                 children: [
                   // Note button
                   FloatingActionButton(
-                    tooltip: "Edit Cell Number",
+                    tooltip: "Add Note",
                     backgroundColor: (notesMode) ? Colors.blue.shade900 : Colors.blue.shade100,
                     onPressed: () {
                       setState(() {
@@ -610,7 +610,7 @@ class _SudokuAppState extends State<SudokuApp> {
                   SizedBox.fromSize(size: const Size.square(30)),
                   // Final button
                   FloatingActionButton(
-                    tooltip: "Add Note",
+                    tooltip: "Edit Cell Number",
                     backgroundColor: (!notesMode) ? Colors.blue.shade900 : Colors.blue.shade100,
                     onPressed: () {
                       setState(() {
